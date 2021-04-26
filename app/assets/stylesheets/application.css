@@ -1,0 +1,36 @@
+body {
+    margin: 0;
+}
+
+.container {
+    width: 100%;
+    margin: 0 auto;
+    background-color: antiquewhite;
+}
+
+nav {
+    background-color: black;
+    text-align: right;
+    height: 8vh;
+    line-height: 8vh;
+}
+
+nav a {
+    color: white;
+}
+
+main {
+    height: 70vh;
+}
+
+footer {
+    background-color: black;
+    height: 8vh;
+    line-height: 8vh;
+    color: white;
+    position: relative;
+}
+
+img {
+    max-height: 100%;
+}

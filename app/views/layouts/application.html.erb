@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>Project1</title>
+    <%= csrf_meta_tags %>
+    <%= csp_meta_tag %>
+
+    <%= stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track': 'reload' %>
+    <%= javascript_include_tag 'application', 'data-turbolinks-track': 'reload' %>
+  </head>
+
+  <body>
+    <div class="container">
+      <header>
+        <nav>
+          <% if @current_customer.present? %>
+            <%= link_to "Customers", customers_path if @current_customer.admin? %>
+            <%= link_to "New booking", new_booking_path %>
+            <%= link_to "Logout #{ @current_customer.email }", login_path, :method => 'delete' %>
+          <% else %>
+            <%= link_to "Log in", login_path %>
+            <%= link_to "Sign up", new_customer_path %>
+          <% end %>
+        </nav>
+      </header>
+
+      <main>
+        <%= yield %>
+      </main>
+
+      <footer>
+        <p>Copyright 2021</p>
+      </footer>
+    </div>
+  </body>
+</html>

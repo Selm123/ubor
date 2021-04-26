@@ -1,0 +1,7 @@
+<% if @current_customer.present? %>
+    <p>Hey, you are logged in as <%= @current_customer.email %></p>
+<% else %>
+    <p>You are not logged in</p>
+    <%= image_tag 'hero_banner_1.jpeg' %>  
+
+<% end %>
