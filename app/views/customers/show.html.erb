@@ -1,0 +1,16 @@
+<h1><%= @customer.name %></h1>
+
+    <ul>
+        <li>Email: <%= @customer.email %></li>
+        <li>First Name: <%= @customer.first_name %></li>
+        <li>Last Name: <%= @customer.last_name %></li>
+        <li>Suburb: <%= @customer.suburb %></li>
+    </ul>
+
+<% @customer.bookings.each do |booking| %>
+    <%= link_to "Bookings", book %>
+<% end %>
+    
+<div class="control">
+    <%= link_to 'Home', root_path %>
+</div>

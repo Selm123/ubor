@@ -93,24 +93,54 @@
 
 **Screen[10]:Customer home page**
 ***Usercase[1-1-only-1,1-1-only-2,2-1-only]***
-* Do: Enter start address, destination address, select 
+* Do: Enter start address, destination address
   result: 
-  redirect to Screen[11]:Driver home page
+  1. View estimated prices for different car types
+  2. Choose car type and submit request
+  3. Before any driver takes the task, show on page: "waiting for driver"
+  4. After a driver takes the task, the booking is confirmed and
+  redirect to Screen[12]:Map page
 
 
 **Screen[11]:Driver home page**
 ***Usercase[1-2-only-1,1-2-only-2,2-2-only]***
+* Do: View and choose nearby requests
+  result: 
+  1. View estimated prices for different car types
+  2. After taking the task, the booking is confirmed and
+  redirect to Screen[12]:Map page 
 
 
+**Screen[12]:Map page**
+* Do: when dirver arrives and customer get into the car, the driver click start button to start gps and calculating fee. When the car arrives destination, the driver clicks finish button and customer pay by credit card automaticly. The customer could review the booking after booking finished.
 
 
-### Usercase[1-2] sign up as driver
-2. new driver sign up
-3. new customer create booking, input start location and destination and choose car model, and estimated_price would be generated
-4. system generate estimated price 
+## Core
+Customer:
+1. Customer could sign up and edit profile
+2. Customer could create booking
+4. Customer could see his own booking index
+5. Customer could create and edit favourite address (external table)
+
+Driver:
+1. Driver could sign up and edit profile
+2. Driver could see the booking index from different customers (only show nearby ones). Driver could not create booking
+3. Ignore the car model now, price is only estimated based on the distance. Also ignore the map showing car moving, only show map is fine after booking confirmed
+4. Driver could take booking(change to confirmed), start trip (booking started), end trip (booking finished)
+
+
+Booking:
+1. booking has 6 status:new--confirmed--started--finished--paid--reviewed
+2. 
+
+## Schedule
+Tuesday: HINCSEUD, make best use of moma and tunr
+Wednesday: geocoder and related stuff (estimated price, car moving, trip start and end)
+Thursday: styling and wrap up
 
 
 ## Must TO DOs
+
 1. logged in customer be able to see all his history bookings
 
 2. logged in driver be able to see the available bookings from all customers near his current location
@@ -127,7 +157,9 @@
 
 8. start calculating after customer get on the car
 
-9. 
+9. credit card expiry date should be string with length of 4
+
+10. change customer to passenger
 
 ## Optional TO DOs
 1. same email could both be driver and customer (test whether now works)
@@ -140,4 +172,20 @@
 
 5. Book for future time e.g. tomorrow
 
-6. 
+6. If after 10 min no driver take the task, show "no driver around, try again later"
+
+7. add "favourite addresses" as a list for customer. Add registered home address as top one of favourite address.
+
+8. make start address by default as local address
+
+9. coudl add multiple credit cards, could choose payment method when looking at estimated price
+
+10. For new sign up user, show them walkthrough/checklist (training/tips)
+
+11. For existing user logging in, they could see new feature notification
+
+12. delete account only change account to inactive, would not really delete
+
+13. driver also be able to rate customer
+
+14. credit card validation

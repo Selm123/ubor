@@ -19,8 +19,14 @@ class CustomersController < ApplicationController
     end
   end
 
+  def show
+  end
+
+  def edit
+  end
+
   private
   def customer_params
-    params.require(:customer).permit(:email, :password, :password_confirmation)
+    params.require(:customer).permit(:first_name, :last_name, :street, :suburb, :postcode, :state, :email, :password, :password_confirmation, :phone, :credit_card_no, :credit_card_expiry_date, :cvv)
   end
 end
