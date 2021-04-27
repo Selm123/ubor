@@ -1,4 +1,4 @@
-<h1>Welcome Driver! Please sign up below</h1>
+<h1>Welcome Driver! Please edit your profile</h1>
 
 <% if @driver.errors.any? %>
     <ol>
@@ -51,5 +51,5 @@
     <%= f.label :driver_license_no %>
     <%= f.text_field :driver_license_no %>
 
-    <%= f.submit "Sign up!"%>
+    <%= f.submit "Edit profile"%>
 <% end %>

@@ -32,7 +32,7 @@ gem 'bcrypt', '~> 3.1.7'
 gem 'bootsnap', '>= 1.1.0', require: false
 
 gem 'jquery-rails'
-
+gem 'bootstrap'
 gem 'geocoder'
 
 group :development, :test do

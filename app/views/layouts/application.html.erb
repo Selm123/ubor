@@ -5,32 +5,35 @@
     <%= csrf_meta_tags %>
     <%= csp_meta_tag %>
 
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+
     <%= stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track': 'reload' %>
     <%= javascript_include_tag 'application', 'data-turbolinks-track': 'reload' %>
   </head>
 
   <body>
+    <nav>
+      <% if @current_customer.present? %>
+        <%= link_to "Customers", customers_path if @current_customer.admin? %>
+        <%= link_to "New booking", new_booking_path %>
+        <%= link_to "Logout #{ @current_customer.email }", customer_login_path, :method => 'delete' %>
+      <% elsif @current_driver.present? %>
+        <%= link_to "New booking", new_booking_path %>
+        <%= link_to "Logout #{ @current_driver.email }", driver_login_path, :method => 'delete' %>
+      <% else %>
+        <%= link_to "Customer log in", customer_login_path %>
+        <%= link_to "Driver log in", driver_login_path %>
+        <%= link_to "Customer sign up", new_customer_path %>
+        <%= link_to "Driver sign up", new_driver_path %>
+      <% end %>
+    </nav>
+    
     <div class="container">
-      <header>
-        <nav>
-          <% if @current_customer.present? %>
-            <%= link_to "Customers", customers_path if @current_customer.admin? %>
-            <%= link_to "New booking", new_booking_path %>
-            <%= link_to "Logout #{ @current_customer.email }", login_path, :method => 'delete' %>
-          <% else %>
-            <%= link_to "Log in", login_path %>
-            <%= link_to "Sign up", new_customer_path %>
-          <% end %>
-        </nav>
-      </header>
-
-      <main>
         <%= yield %>
-      </main>
-
-      <footer>
-        <p>Copyright 2021</p>
-      </footer>
     </div>
+
+    <footer class='footer'>
+      <p>Copyright 2021</p>
+    </footer>
   </body>
 </html>

@@ -1,0 +1,19 @@
+<h1><%= @driver.first_name + " " + @driver.last_name %></h1>
+
+    <ul>
+        <li>Email: <%= @driver.email %></li>
+        <li>First Name: <%= @driver.first_name %></li>
+        <li>Last Name: <%= @driver.last_name %></li>
+        <li>Suburb: <%= @driver.suburb %></li>
+    </ul>
+
+
+    <% @driver.bookings.each do |booking| %>
+        <%= link_to booking.estimated_price.to_s, booking %>
+    <% end %>
+
+    
+<div class="control">
+    <%= link_to 'Edit profile', edit_driver_path(@driver) %>
+    <%= link_to 'Delete account', @driver, :method => :delete, :data => {:confirm => 'Are you sure?'} %>
+</div>

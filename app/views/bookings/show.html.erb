@@ -1,0 +1,14 @@
+<h1><%= @booking.estimated_price %></h1>
+
+<ul>
+    <li>Estimated: <%= @booking.estimated_price %></li>
+    <% if @booking.driver.present? %>
+    <li>Driver: <%=link_to @booking.driver.email, @booking.driver %></li>
+    <% end %>
+    <li>Customer: <%=link_to @booking.customer.email, @booking.customer %></li>
+</ul>
+
+<div class="controls">
+    
+    <%= link_to 'Delete booking', @booking, :method => 'delete', :data => {:confirm => 'Are you sure?' } %>
+</div>

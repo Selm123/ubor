@@ -1,0 +1,8 @@
+<h1>All Bookings</h1>
+
+<% @bookings.each do |booking| %>
+  <p><%= booking.estimated_price %></p>
+  <p><%= booking.customer_id %></p>
+  <p><%= booking.from_address %></p>
+  <p><%= booking.to_address %></p>
+<% end %>

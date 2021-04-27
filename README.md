@@ -117,9 +117,7 @@
 
 ## Core
 Customer:
-1. Customer could sign up and edit profile
-2. Customer could create booking
-4. Customer could see his own booking index
+4. Customer could only see his own booking index (not others! need fix)
 5. Customer could create and edit favourite address (external table)
 
 Driver:
@@ -134,9 +132,11 @@ Booking:
 2. 
 
 ## Schedule
-Tuesday: HINCSEUD, make best use of moma and tunr
 Wednesday: geocoder and related stuff (estimated price, car moving, trip start and end)
 Thursday: styling and wrap up
+
+
+
 
 
 ## Must TO DOs
@@ -160,6 +160,8 @@ Thursday: styling and wrap up
 9. credit card expiry date should be string with length of 4
 
 10. change customer to passenger
+
+11. allow driver choose car type
 
 ## Optional TO DOs
 1. same email could both be driver and customer (test whether now works)

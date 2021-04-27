@@ -1,0 +1,52 @@
+<h1>Welcome Customer! Please edit your profile</h1>
+
+<% if @customer.errors.any? %>
+    <ol>
+        <% @customer.errors.full_messages.each do|msg| %>
+            <li><%= msg %></li>
+        <% end %>
+    </ol>
+<% end %>
+
+<%= form_for @customer do |f|%>
+    <%= f.label :first_name %>
+    <%= f.text_field :first_name, :required => true %>
+
+    <%= f.label :last_name %>
+    <%= f.text_field :last_name, :required => true %>
+
+    <%= f.label :street %>
+    <%= f.text_field :street %>
+
+    <%= f.label :suburb %>
+    <%= f.text_field :suburb %>
+
+    <%= f.label :postcode %>
+    <%= f.text_field :postcode %>
+
+    <%= f.label :state %>
+    <%= f.text_field :state %>
+
+    <%= f.label :email %>
+    <%= f.email_field :email %>
+
+    <%= f.label :password %>
+    <%= f.password_field :password %> 
+
+    <%= f.label :password_confirmation %>
+    <%= f.password_field :password_confirmation %>
+
+    <%= f.label :phone %>
+    <%= f.text_field :phone %>
+
+    <%= f.label :credit_card_no %>
+    <%= f.text_field :credit_card_no %>
+
+    <%= f.label :credit_card_expiry_date %>
+    <%= f.text_field :credit_card_expiry_date, :placeholder => 'YYYY-MM-DD' %>  
+
+    <%= f.label :cvv %>
+    <%= f.text_field :cvv %>
+
+    <%= f.submit "Edit profile"%>
+<% end %>
