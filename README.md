@@ -131,6 +131,10 @@ Booking:
 1. booking has 6 status:new--confirmed--started--finished--paid--reviewed
 2. 
 
+* Booking could update could not edit
+* Booking could be cancelled (deleted because we don't want unconfirmed booking in the db), customer and driver couldn't really delete the booking (because the other party would also be affected), their 'delete' in their booking histroy is just to hide them
+* When booking is created, the default status is 'new'. After a driver takes it, status:"confirmed". After the customer enters the car and driver presses start button, status:"started". After arriving on destination in gps, driver could press finish button (if still far from it then driver couldn't)
+
 ## Schedule
 Wednesday: geocoder and related stuff (estimated price, car moving, trip start and end)
 Thursday: styling and wrap up

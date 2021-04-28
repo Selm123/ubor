@@ -1,5 +1,7 @@
 Rails.application.routes.draw do
   root :to => 'pages#home'
+  get'/login' => 'pages#login'
+  get'/signup' => 'pages#signup'
 
   get '/customer_login' => 'customer_session#new'
   post '/customer_login' => 'customer_session#create'
@@ -11,5 +13,5 @@ Rails.application.routes.draw do
 
   resources :customers
   resources :drivers
-  resources :bookings, :only => [:index, :new, :create, :show]
+  resources :bookings, :except => [:edit]
 end

@@ -24,7 +24,7 @@ ActiveRecord::Schema.define(version: 2021_04_26_021307) do
     t.time "end_time"
     t.float "estimated_price"
     t.float "actual_price"
-    t.text "status"
+    t.text "status", default: "new"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
   end
