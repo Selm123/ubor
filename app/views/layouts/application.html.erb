@@ -3,7 +3,11 @@
   <head>
     <title>Ubor</title>
     <%= csrf_meta_tags %>
+
+    <%= Gon::Base.render_data %>
+
     <%= csp_meta_tag %>
+
 
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
 
@@ -12,22 +16,31 @@
   </head>
 
   <body>
-    <nav>
-      <% if @current_customer.present? %>
-        <%= link_to "Customers", customers_path if @current_customer.admin? %>
-        <%= link_to "New booking", new_booking_path %>
-        <%= link_to "Logout #{ @current_customer.email }", customer_login_path, :method => 'delete' %>
-      <% elsif @current_driver.present? %>
-        <%= link_to "New booking", new_booking_path %>
-        <%= link_to "Logout #{ @current_driver.email }", driver_login_path, :method => 'delete' %>
-      <% else %>
-        <%= link_to "Customer log in", customer_login_path %>
-        <%= link_to "Driver log in", driver_login_path %>
-        <%= link_to "Customer sign up", new_customer_path %>
-        <%= link_to "Driver sign up", new_driver_path %>
-      <% end %>
-    </nav>
+    <div class="row">
+      <div class="col-md-4 nav-line"  id="nav-left">
+        <a href='/'>Ubor</a>
+      </div>
+
+      <div class="col-md-8  nav-line">
+        <nav>
+          <% if @current_customer.present? %>
+            <%= link_to "Customers", customers_path if @current_customer.admin? %>
+            <%= link_to "New booking", new_booking_path %>
+            <%= link_to "Logout #{ @current_customer.email }", customer_login_path, :method => 'delete' %>
+          <% elsif @current_driver.present? %>
+            <%= link_to "New booking", new_booking_path %>
+            <%= link_to "Logout #{ @current_driver.email }", driver_login_path, :method => 'delete' %>
+          <% else %>
+            <%= link_to "Customer log in", customer_login_path %>
+            <%= link_to "Driver log in", driver_login_path %>
+            <%= link_to "Customer sign up", new_customer_path %>
+            <%= link_to "Driver sign up", new_driver_path %>
+          <% end %>
+        </nav>
+      </div>
+    </div>
     
+
     <div class="container">
         <%= yield %>
     </div>

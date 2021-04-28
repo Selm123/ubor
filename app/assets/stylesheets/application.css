@@ -21,24 +21,39 @@ body {
 
 .container {
     margin: 0 auto;
+
     height: 90vh;
 }
 
-nav {
+.nav-line {
     background-color: black;
-    text-align: right;
-    height: 8vh;
-    line-height: 8vh;
+    height: 10vh;
+    line-height: 10vh;
 }
 
-nav a {
+.nav-line a {
     color: white;
 }
 
+#nav-left {
+    text-align: left;
+}
+
+#nav-left a {
+    margin-left: 10vh;
+}
+
+nav {
+    text-align: right;
+    margin-right: 10vh;
+}
+
+
+
 footer {
     background-color: black;
-    height: 8vh;
-    line-height: 8vh;
+    height: 10vh;
+    line-height: 10vh;
     color: white;
     position: relative;
 }
