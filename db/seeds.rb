@@ -17,7 +17,7 @@ d3 = Driver.create :first_name => "driver3_fn", :last_name => "driver3_ln", :str
 
 d4 = Driver.create :first_name => "driver4_fn", :last_name => "driver4_ln", :street => "4 Church St", :suburb => "Parramatta", :postcode => "2150", :state => "NSW", :email => 'driver4@gmail.com', :password => 'chicken', :phone => '0405000008', :bank_bsb_no => '423456', :bank_account_no => '423456789', :car_model_id => 4, :driver_license_no => "42345678"
 puts "#{Driver.count} drivers"
-
+    
 Booking.destroy_all
 b1 = Booking.create :estimated_price => 15.45
 b2 = Booking.create :estimated_price => 25.45

@@ -121,7 +121,6 @@ Customer:
 5. Customer could create and edit favourite address (external table)
 
 Driver:
-1. Driver could sign up and edit profile
 2. Driver could see the booking index from different customers (only show nearby ones). Driver could not create booking
 3. Ignore the car model now, price is only estimated based on the distance. Also ignore the map showing car moving, only show map is fine after booking confirmed
 4. Driver could take booking(change to confirmed), start trip (booking started), end trip (booking finished)
