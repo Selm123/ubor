@@ -1,3 +1,59 @@
+<script src="https://polyfill.io/v3/polyfill.min.js?features=default"></script>
+    <script>
+
+      function initMap() {
+        const directionsRenderer = new google.maps.DirectionsRenderer();
+        const directionsService = new google.maps.DirectionsService();
+        const map = new google.maps.Map(document.getElementById("map"), {
+          zoom: 14,
+        //   center: { lat: 37.77, lng: -122.447 },
+        });
+        directionsRenderer.setMap(map);
+        calculateAndDisplayRoute(directionsService, directionsRenderer);
+        document.getElementById("mode").addEventListener("change", () => {
+          calculateAndDisplayRoute(directionsService, directionsRenderer);
+        });
+      }
+
+      function calculateAndDisplayRoute(directionsService, directionsRenderer) {
+        const selectedMode = document.getElementById("mode").value;
+        console.log(gon.from_address_lat)
+        console.log(gon.from_address_lon)
+        console.log(gon.to_address_lat)
+        console.log(gon.to_address_lon)
+        directionsService.route(
+          {
+            origin: { lat: gon.from_address_lat, lng: gon.from_address_lon },
+            destination: { lat: gon.to_address_lat, lng: gon.to_address_lon },
+            // Note that Javascript allows us to access the constant
+            // using square brackets and a string value as its
+            // "property."
+            travelMode: google.maps.TravelMode[selectedMode],
+          },
+          (response, status) => {
+            if (status == "OK") {
+              directionsRenderer.setDirections(response);
+            } else {
+              window.alert("Directions request failed due to " + status);
+            }
+          }
+        );
+      }
+    
+    </script>
+
+
+    <% 
+    from_coordinates = Geocoder.coordinates("#{@current_customer.bookings[@current_customer.bookings.length-1].from_address}")
+
+    to_coordinates = Geocoder.coordinates("#{@current_customer.bookings[@current_customer.bookings.length-1].to_address}")
+
+%>
+
+
+distance: <%= Geocoder::Calculations.distance_between([from_coordinates[0],from_coordinates[1]], [to_coordinates[0],to_coordinates[1]])*1.60934 *1.15%> km
+
+
 <h1><%= @booking.estimated_price %></h1>
 
 <ul>
@@ -12,3 +68,22 @@
     
     <%= link_to 'Delete booking', @booking, :method => 'delete', :data => {:confirm => 'Are you sure?' } %>
 </div>
+
+<%= @booking.from_address %>
+
+<%= @booking.to_address %>
+
+<div id="floating-panel">
+      <b>Mode of Travel: </b>
+      <select id="mode">
+        <option value="DRIVING">Driving</option>
+        <option value="WALKING">Walking</option>
+        <option value="BICYCLING">Bicycling</option>
+        <option value="TRANSIT">Transit</option>
+      </select>
+    </div>
+
+    <div id="map"></div>
+
+
+    <script async defer src="https://maps.googleapis.com/maps/api/js?key=AIzaSyDjI23uIXRb73MjkDTGcrkN_OJy7i0dbS0&callback=initMap"></script>

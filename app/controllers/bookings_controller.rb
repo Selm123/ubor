@@ -12,11 +12,19 @@ class BookingsController < ApplicationController
   def create
     booking = Booking.create booking_params
     @current_customer.bookings << booking
-    redirect_to root_path
+    redirect_to root_path  
   end
 
   def show
     @booking = Booking.find params[:id]
+    # gon.from_address = @booking.from_address
+    # gon.to_address = @booking.to_address
+    # gon.vv_name = 7
+    gon.from_address_lat=Geocoder.coordinates("#{@booking.from_address}")[0]
+    gon.from_address_lon=Geocoder.coordinates("#{@booking.from_address}")[1]
+    gon.to_address_lat=Geocoder.coordinates("#{@booking.to_address}")[0]
+    gon.to_address_lon=Geocoder.coordinates("#{@booking.to_address}")[1]
+
   end
 
   def edit

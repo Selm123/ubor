@@ -2,6 +2,7 @@
 <html>
   <head>
     <title>Ubor</title>
+    
     <%= csrf_meta_tags %>
 
     <%= Gon::Base.render_data %>
@@ -16,6 +17,12 @@
   </head>
 
   <body>
+
+  <div class="test">
+  
+  
+  
+  </div>
     <div class="row">
       <div class="col-md-4 nav-line"  id="nav-left">
         <a href='/'>Ubor</a>
@@ -39,13 +46,18 @@
       </div>
     </div>
     
-
-    <div class="container">
+    <div class="row">
+      <div class="container col-md-12">
         <%= yield %>
+      </div>
     </div>
 
-    <footer class='footer'>
-      <p>Copyright 2021</p>
-    </footer>
+    <div class="row">
+      <footer class='footer col-md-12'>
+        <p>Copyright 2021</p>
+      </footer>
+    </div>
+
+  
   </body>
 </html>

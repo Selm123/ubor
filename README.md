@@ -1,6 +1,15 @@
 # README
 
 
+Ask
+1. How to hide api key and upload to heroku
+
+Do
+1. add default 'NSW Australia' to from and to address
+2. update booking seed
+3. rename heroku and permit heroku address in google api
+4. style website
+
 ## User Flow and Wireframes
 
 **Screen[1]: Home page**
@@ -124,6 +133,7 @@ Driver:
 2. Driver could see the booking index from different customers (only show nearby ones). Driver could not create booking
 3. Ignore the car model now, price is only estimated based on the distance. Also ignore the map showing car moving, only show map is fine after booking confirmed
 4. Driver could take booking(change to confirmed), start trip (booking started), end trip (booking finished)
+5. 
 
 
 Booking:
@@ -194,3 +204,5 @@ Thursday: styling and wrap up
 13. driver also be able to rate customer
 
 14. credit card validation
+
+15. Add current location

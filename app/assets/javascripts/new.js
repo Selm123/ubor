@@ -1,11 +1,12 @@
+$(document).ready(function () {
+  console.log("hello");
 
-$(document).ready(function(){
+  console.log(`${gon.variable_name}`);
 
-    console.log("hello")
+  // $("h1").hide();
+  console.log(`${gon.from_address}`)
+  console.log(`${gon.to_address}`)
 
-    console.log(`${gon.variable_name}`)
-
-    // $("h1").hide();
-})
-
-
+  console.log(`${gon.vv_name}`)
+  
+});
