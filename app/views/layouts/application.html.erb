@@ -23,15 +23,16 @@
       <div class="col-md-8  nav-line">
         <nav>
           <% if @current_customer.present? %>
-            <%= link_to "Customers", customers_path if @current_customer.admin? %>          
-            <%= link_to "Customer Profile", @current_customer %>
-            <%= link_to "New booking", new_booking_path %>
-            <%= link_to "Logout #{ @current_customer.email }", customer_login_path, :method => 'delete' %>
+            <%= link_to "Customers", customers_path if @current_customer.admin? %>   
+            <%= link_to "New booking |", new_booking_path %>     
+            <%= link_to "Customer profile |", @current_customer %>  
+            <%= link_to "Logout", customer_login_path, :method => 'delete' %>
           <% elsif @current_driver.present? %>
-            <%= link_to "Driver Profile", @current_driver %>
-            <%= link_to "Logout #{ @current_driver.email }", driver_login_path, :method => 'delete' %>
+            <%= link_to "Jobs |", bookings_path %>
+            <%= link_to "Driver profile |", @current_driver %> 
+            <%= link_to "Logout", driver_login_path, :method => 'delete' %>
           <% else %>
-            <%= link_to "log in", login_path, :id=>"log_in" %>
+            <%= link_to "log in |", login_path, :id=>"log_in" %>
             <%= link_to "sign up", signup_path, :id=>"sign_up"  %>
           <% end %>
         </nav>

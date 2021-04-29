@@ -1,17 +1,49 @@
 # README
 
+## It's Ubor, not Uber
 
-1. User flow walk through and fix info display
-2. Styling
-3. authorisation
-4. clean code and add comment
-5. test
+[It's Ubor, not Uber](https://project1ubor.herokuapp.com/)
+
+## Future iterations
+* UTC time to Sydney time
+* Change booking status
+* Different booking authorisation for customers and drivers
+* Home page toggle background photo 
+
+* Add more comments
+* Add default 'NSW Australia' to from and to address
+* Modify the tables, remove unnecessary columns
+* Add car model table, or get from external API, when inputing plate number of the car, its model would be identified and different estimated prices generated for each car type
+* Booking should have 6 status:
+new--confirmed--started--finished--paid--reviewed
+* Driver should be able to change the status to "started" when customer enters the car, and change to "finished" after arriving
+* Once a driver takes the job (booking is confirmed), the customer will be able to see the car moving on the map and be notified once the car is nearyby and has arrived.
+* Replace all "customer" with "passenger"
+* It's developed under 150% zoom, switch to 100% and adjust the size of elements
+* Customer should be able to see the car's current address updated on map during the trip.
+* Only customer could create new booking and cancel(delete, because we don't want unconfirmed booking in the db) booking. Only driver could view booking index. Only logged in users could view history booking(his own bookings) and change booking status.
+* when dirver arrives and customer get into the car, the driver click start button to start gps and calculating fee. When the car arrives destination, the driver clicks finish button and customer pay by credit card automaticly. The customer could review the booking after booking finished.
+* Driver couldn't change booking status to "finished" until the car's current location is very close to destination
+* Customer could create and edit favourite addresses (create external table for that, one customer have many favourte addresses). Customer's registered home address will be the first one in favourite addresses.
+* Driver could see the booking index from different customers (only show nearby ones).
+* Customer and driver couldn't really delete the booking (except cancelling a new booking which has not been taken by any driver), their 'delete' in their booking histroy is just to hide the booking, not actual delete from db(because the other party would also be affected).
+* Payment and credit card validation
+* Driver also be able to rate customer
+* Only customer/driver with valid payment detail could make booking and take booking
+* Start calculating actual price after customer get on the car
+* Credit card expiry date should be string with length of 4, not date
+* If a person uses Ubor company email to login, he/she becomes admin automatically
+* If the password input is wrong for 3 times, the account will be locked and the user need to contact admin to unlock
+* If after 10 min there's still no driver taking the task, show "no driver around, try again later"
+* Customer could book for future time e.g. tomorrow
+* Identify customer's current location and make it as start location by default
+* Customer could add multiple credit cards, could choose payment method when looking at estimated price
+* For new sign up user, show them walkthrough/checklist (training/tips). When existing user logging in, they could see new feature notification
+* Deleting account would not really delete from db, only change account to inactive
+* Rename heroku repo
 
 
-add default 'NSW Australia' to from and to address
-rename heroku and permit heroku address in google api
-
-## User Flow and Wireframes
+## User Flow (first draft before developing)
 
 **Screen[1]: Home page**
 ***Usercase[1]***
@@ -122,88 +154,3 @@ rename heroku and permit heroku address in google api
 
 
 **Screen[12]:Map page**
-* Do: when dirver arrives and customer get into the car, the driver click start button to start gps and calculating fee. When the car arrives destination, the driver clicks finish button and customer pay by credit card automaticly. The customer could review the booking after booking finished.
-
-
-## Core
-Customer:
-4. Customer could only see his own booking index (not others! need fix)
-5. Customer could create and edit favourite address (external table)
-
-Driver:
-2. Driver could see the booking index from different customers (only show nearby ones). Driver could not create booking
-3. Ignore the car model now, price is only estimated based on the distance. Also ignore the map showing car moving, only show map is fine after booking confirmed
-4. Driver could take booking(change to confirmed), start trip (booking started), end trip (booking finished)
-5. 
-
-
-Booking:
-1. booking has 6 status:new--confirmed--started--finished--paid--reviewed
-2. 
-
-* Booking could update could not edit
-* Booking could be cancelled (deleted because we don't want unconfirmed booking in the db), customer and driver couldn't really delete the booking (because the other party would also be affected), their 'delete' in their booking histroy is just to hide them
-* When booking is created, the default status is 'new'. After a driver takes it, status:"confirmed". After the customer enters the car and driver presses start button, status:"started". After arriving on destination in gps, driver could press finish button (if still far from it then driver couldn't)
-
-## Schedule
-Wednesday: geocoder and related stuff (estimated price, car moving, trip start and end)
-Thursday: styling and wrap up
-
-
-
-
-
-## Must TO DOs
-
-1. logged in customer be able to see all his history bookings
-
-2. logged in driver be able to see the available bookings from all customers near his current location
-
-3. logged in driver be able to choose one current booking and change its status
-
-4. only customer/driver with valid payment detail could make booking and take booking
-
-5. style it to make it look like mai's site
-
-6. in sign up, check for duplicate email (already done?)
-
-7. Finish Customer whole user flow, driver is optional
-
-8. start calculating after customer get on the car
-
-9. credit card expiry date should be string with length of 4
-
-10. change customer to passenger
-
-11. allow driver choose car type
-
-## Optional TO DOs
-1. same email could both be driver and customer (test whether now works)
-
-2. bootstrap for responsive
-
-3. use company email to login, become admin automatically
-
-4. password wrong 3 times and lock the account, contact admin to unlock
-
-5. Book for future time e.g. tomorrow
-
-6. If after 10 min no driver take the task, show "no driver around, try again later"
-
-7. add "favourite addresses" as a list for customer. Add registered home address as top one of favourite address.
-
-8. make start address by default as local address
-
-9. coudl add multiple credit cards, could choose payment method when looking at estimated price
-
-10. For new sign up user, show them walkthrough/checklist (training/tips)
-
-11. For existing user logging in, they could see new feature notification
-
-12. delete account only change account to inactive, would not really delete
-
-13. driver also be able to rate customer
-
-14. credit card validation
-
-15. Add current location

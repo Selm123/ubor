@@ -1,5 +1,7 @@
 class BookingsController < ApplicationController
-  before_action :check_for_customer_login || :check_for_driver_login
+  before_action :check_for_customer_login, :only => [:new, :create,:show,:edit, :update, :destroy]
+  before_action :check_for_driver_login, :only => [:index,:show,:edit, :update]
+  # Only customer could create new booking and cancel(delete, because we don't want unconfirmed booking in the db) booking. Only driver could view booking index. Only logged in users could view history booking(his own bookings) and change booking status.
 
   def index
     @bookings = Booking.all
@@ -17,6 +19,8 @@ class BookingsController < ApplicationController
 
   def show
     @booking = Booking.find params[:id]
+
+    # using gon and geocoder to pass coordinates from rails to google map api, which is written in JavaScript
     gon.from_address_lat=Geocoder.coordinates("#{@booking.from_address}")[0]
     gon.from_address_lon=Geocoder.coordinates("#{@booking.from_address}")[1]
     gon.to_address_lat=Geocoder.coordinates("#{@booking.to_address}")[0]
@@ -38,7 +42,7 @@ class BookingsController < ApplicationController
     booking = Booking.find params[:id]
     booking.destroy
     redirect_to new_booking_path
-end
+  end
 
   private
   def booking_params

@@ -1,50 +1,49 @@
+<% # google direction api code start %>
 <script src="https://polyfill.io/v3/polyfill.min.js?features=default"></script>
-    <script>
+<script>
 
-      function initMap() {
-        const directionsRenderer = new google.maps.DirectionsRenderer();
-        const directionsService = new google.maps.DirectionsService();
-        const map = new google.maps.Map(document.getElementById("map"), {
-          zoom: 14,
-        //   center: { lat: 37.77, lng: -122.447 },
-        });
-        directionsRenderer.setMap(map);
-        calculateAndDisplayRoute(directionsService, directionsRenderer);
-        document.getElementById("mode").addEventListener("change", () => {
-          calculateAndDisplayRoute(directionsService, directionsRenderer);
-        });
+  function initMap() {
+    const directionsRenderer = new google.maps.DirectionsRenderer();
+    const directionsService = new google.maps.DirectionsService();
+    const map = new google.maps.Map(document.getElementById("map"), {
+      zoom: 14,
+    //   center: { lat: 37.77, lng: -122.447 },
+    });
+    directionsRenderer.setMap(map);
+    calculateAndDisplayRoute(directionsService, directionsRenderer);
+    document.getElementById("mode").addEventListener("change", () => {
+      calculateAndDisplayRoute(directionsService, directionsRenderer);
+    });
+  }
+
+  function calculateAndDisplayRoute(directionsService, directionsRenderer) {
+    const selectedMode = document.getElementById("mode").value;
+    console.log(gon.from_address_lat)
+    console.log(gon.from_address_lon)
+    console.log(gon.to_address_lat)
+    console.log(gon.to_address_lon)
+    directionsService.route(
+      {
+        origin: { lat: gon.from_address_lat, lng: gon.from_address_lon },
+        destination: { lat: gon.to_address_lat, lng: gon.to_address_lon },
+        // Note that Javascript allows us to access the constant
+        // using square brackets and a string value as its
+        // "property."
+        travelMode: google.maps.TravelMode[selectedMode],
+      },
+      (response, status) => {
+        if (status == "OK") {
+          directionsRenderer.setDirections(response);
+        } else {
+          window.alert("Directions request failed due to " + status);
+        }
       }
+    );
+  }
+</script>
+<% # google direction api code end %>
 
-      function calculateAndDisplayRoute(directionsService, directionsRenderer) {
-        const selectedMode = document.getElementById("mode").value;
-        console.log(gon.from_address_lat)
-        console.log(gon.from_address_lon)
-        console.log(gon.to_address_lat)
-        console.log(gon.to_address_lon)
-        directionsService.route(
-          {
-            origin: { lat: gon.from_address_lat, lng: gon.from_address_lon },
-            destination: { lat: gon.to_address_lat, lng: gon.to_address_lon },
-            // Note that Javascript allows us to access the constant
-            // using square brackets and a string value as its
-            // "property."
-            travelMode: google.maps.TravelMode[selectedMode],
-          },
-          (response, status) => {
-            if (status == "OK") {
-              directionsRenderer.setDirections(response);
-            } else {
-              window.alert("Directions request failed due to " + status);
-            }
-          }
-        );
-      }
-    
-    
-    
-    </script>
-
-
+<% # geocoder to calculate coordinates, distance and estimated price start %>
 <% 
   if @current_customer.nil?
     current_booking = @current_driver.bookings[@current_driver.bookings.length-1] 
@@ -64,6 +63,7 @@
   @booking.estimated_price = estimated_price
   @booking.save
 %>
+<% # geocoder to calculate coordinates, distance and estimated price end %>
 
 <div id="booking-show-offset1" class="row">
   <div class="col-md-12"></div>
@@ -81,20 +81,22 @@
       <% end %>
     </ul>
 
-    <div class="controls">  
-      <div class="row">
-        <div class="col-md-6">
-          <%= button_to 'Cancel booking', @booking, :method => 'delete', :data => {:confirm => 'Are you sure?' }, class: "button btn-danger"%>
-        </div>
+    <% if @booking.status=="new" %>
+      <div class="controls">  
+        <div class="row">
+          <div class="col-md-6">
+            <%= button_to 'Cancel booking', @booking, :method => 'delete', :data => {:confirm => 'Are you sure?' }, class: "button btn-danger"%>
+          </div>
 
-        <div class="col-md-6">
-          <%= form_for @booking do |t|%>
-          <%= t.hidden_field :status, @booking.status=> "confirmed" %>
-          <%= t.submit "Confirm booking", class: "button btn-success" %>
-          <% end %>
+          <div class="col-md-6">
+              <%= form_for @booking do |t|%>
+              <%= t.hidden_field :status, @booking.status=> "confirmed" %>
+              <%= t.submit "Confirm booking", class: "button btn-success", :id=>"confirm-booking" %>
+              <% end %>
+          </div>
         </div>
       </div>
-    </div>
+    <% end %>
   </div>
 
   <div class="col-md-7">
@@ -111,8 +113,10 @@
   </div>
 </div>
 
-<script async defer src="https://maps.googleapis.com/maps/api/js?key=AIzaSyDjI23uIXRb73MjkDTGcrkN_OJy7i0dbS0&callback=initMap"></script>
+<%# <div id="waiting_for_driver">
+  <p>Waiting for driver to take the job...</p>
+</div> %>
 
-<script>
-  $('#confirm-btn').text(gon.booking.from_address)
-</script>
+<% # google direction api code start %>
+<script async defer src="https://maps.googleapis.com/maps/api/js?key=AIzaSyDjI23uIXRb73MjkDTGcrkN_OJy7i0dbS0&callback=initMap"></script>
+<% # google direction api code end %>

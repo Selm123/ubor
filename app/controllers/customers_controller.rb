@@ -1,10 +1,10 @@
 class CustomersController < ApplicationController
-  before_action :check_for_admin, :only => [:index]
-  # before_action :check_for_customer_login
+  # before_action :check_for_admin, :only => [:index]
 
-  def index
-    @customers = Customer.all
-  end
+  # def index
+  #   @customers = Customer.all
+  # end
+  # not allowed to see customer index for now, new feature to be added in the future
 
   def new
     @customer = Customer.new
@@ -14,7 +14,7 @@ class CustomersController < ApplicationController
     @customer = Customer.new customer_params
     if @customer.save
       session[:customer_id] = @customer.id
-      redirect_to root_path
+      redirect_to new_booking_path
     else
       render :new
     end

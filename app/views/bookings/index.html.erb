@@ -1,9 +1,27 @@
-<h1>All Bookings</h1>
 
-<% @bookings.each do |booking| %>
-  <p><%= booking.estimated_price %></p>
-  <p><%= booking.customer_id %></p>
-  <p><%= booking.from_address %></p>
-  <p><%= booking.to_address %></p>
-<% end %>
+<div id="bookings-index" class="row">
+  <div class="col-md-6 offset-md-3">
+    <h4>All Bookings</h4>
+    <% @bookings.each do |booking| %>
+      <% if booking.status=="new" %>
+        <div class="row booking-index-container">
+          <div class="col-md-8 booking-index-left">
+            <p>Created at: <%= booking.created_at %></p>
+            <p>From: <%= booking.from_address %></p>
+            <p>To: <%= booking.to_address %></p>
+          </div>
+
+          <div class="col-md-4 booking-index-right">
+            <button class="btn btn-primary">Take job</button>
+          </div>
+        </div>
+      <% end %>
+    <% end %>
+  </div>
+</div>
+
+
+
+
+
 

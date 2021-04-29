@@ -1,10 +1,10 @@
 class DriversController < ApplicationController
-  before_action :check_for_admin, :only => [:index]
-  # before_action :check_for_driver_login
+  # before_action :check_for_admin, :only => [:index]
 
-  def index
-    @drivers = Driver.all
-  end
+  # def index
+  #   @drivers = Driver.all
+  # end
+  # not allowed to see driver index for now, new feature to be added in the future
 
   def new
     @driver = Driver.new
@@ -14,7 +14,7 @@ class DriversController < ApplicationController
     @driver = Driver.new driver_params
     if @driver.save
       session[:driver_id] = @driver.id
-      redirect_to root_path
+      redirect_to bookings_path
     else
       render :new
     end

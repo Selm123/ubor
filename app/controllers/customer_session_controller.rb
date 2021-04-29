@@ -6,7 +6,7 @@ class CustomerSessionController < ApplicationController
       customer = Customer.find_by :email => params[:email]
       if customer.present? && customer.authenticate(params[:password])
         session[:customer_id] = customer.id
-        redirect_to root_path
+        redirect_to new_booking_path
       else
         flash[:error_message] = "Invalid email or password"
         redirect_to customer_login_path

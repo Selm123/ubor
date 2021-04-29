@@ -19,10 +19,10 @@ d4 = Driver.create :first_name => "driver4_fn", :last_name => "driver4_ln", :str
 puts "#{Driver.count} drivers"
     
 Booking.destroy_all
-b1 = Booking.create :estimated_price => 15.45, :from_address=>"1 Market St Sydney NSW Australia", :to_address=>"159 Church St Parramatta NSW Australia"
-b2 = Booking.create :estimated_price => 25.45, :from_address=>"1 Anderson St Chatswood NSW Australia", :to_address=>"6 Castle St Castle Hill NSW Australia"
-b3 = Booking.create :estimated_price => 35.45, :from_address=>"236 Pacific Hwy Hornsby NSW Australia", :to_address=>"455 George St Sydney NSW Australia"
-b4 = Booking.create :estimated_price => 45.45, :from_address=>"140 George St Sydney NSW Australia", :to_address=>"19 Lilianfels Ave Katoomba NSW Australia"
+b1 = Booking.create :from_address=>"1 Market St Sydney NSW Australia", :to_address=>"159 Church St Parramatta NSW Australia", :status=>"finished"
+b2 = Booking.create :from_address=>"1 Anderson St Chatswood NSW Australia", :to_address=>"6 Castle St Castle Hill NSW Australia", :status=>"finished"
+b3 = Booking.create :from_address=>"236 Pacific Hwy Hornsby NSW Australia", :to_address=>"455 George St Sydney NSW Australia", :status=>"finished"
+b4 = Booking.create :from_address=>"140 George St Sydney NSW Australia", :to_address=>"19 Lilianfels Ave Katoomba NSW Australia", :status=>"finished"
 puts "#{Booking.count} bookings"
 
 

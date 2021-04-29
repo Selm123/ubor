@@ -1,7 +1,4 @@
-
-<div id='offset1' class="row">
-
-</div>
+<div id='offset1' class="row"></div>
 
 <div class="row">
     <div id="entrance" class="col-md-4 offset-md-2">
@@ -16,10 +13,16 @@
             </div>
         </div>
 
-        <div id="entrance-main" class="row">
+        <div id="entrance-main-1" class="row">
             <h2>Get in the driver's seat and get paid</h2>
             <p>Drive on the platform with the largest network of active riders.</p>
-            <%= button_to "Sign up to drive", new_driver_path, :method=>"get" %>
+            <%= button_to "Sign up to drive", new_driver_path, :method=>"get", :class => "btn btn-primary" %>
+        </div>
+
+        <div id="entrance-main-2" class="row">
+            <h2>Request a ride now</h2>
+            <p>Explore the wrold with Ubor, we are always with you</p>
+            <%= button_to "Sign up to ride", new_customer_path, :method=>"get", :class => "btn btn-success" %>
         </div>
     </div>
 </div>

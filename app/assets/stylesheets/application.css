@@ -49,24 +49,12 @@ nav {
     margin-right: 10vh;
 }
 
-
-
-footer {
-    background-color: black;
-    height: 10vh;
-    line-height: 10vh;
-    color: white;
-    position: relative;
-}
-
 img {
     max-width: 100%;
 }
 
 
-
-
-
+/* following are the styling of google map */
 #map {
     height: 100%;
   }

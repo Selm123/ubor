@@ -19,3 +19,37 @@
 #booking-new {
     margin-top: 10vh;
 }
+
+#bookings-index {
+    text-align: center;
+    font-size: 12px;
+}
+
+#bookings-index h4{
+    margin-top: 2vh;
+    margin-bottom: 2vh;
+}
+
+.booking-index-left {
+    text-align: left;
+}
+
+.booking-index-right button{
+    margin-top: 4vh;
+}
+
+.booking-index-container {
+    border: 1px solid grey;
+    margin-bottom: 2vh;
+    padding:4px;
+    background-color: rgba(128, 128, 128, 0.178);
+}
+
+#waiting_for_driver{
+    position: absolute;
+    margin-left: 40vw;
+    margin-top : 100px;
+    z-index: 1;
+    width: 20vw;
+    height: 10vh;
+}
