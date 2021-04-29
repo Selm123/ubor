@@ -1,14 +1,15 @@
 # README
 
 
-Ask
-1. How to hide api key and upload to heroku
+1. User flow walk through and fix info display
+2. Styling
+3. authorisation
+4. clean code and add comment
+5. test
 
-Do
-1. add default 'NSW Australia' to from and to address
-2. update booking seed
-3. rename heroku and permit heroku address in google api
-4. style website
+
+add default 'NSW Australia' to from and to address
+rename heroku and permit heroku address in google api
 
 ## User Flow and Wireframes
 

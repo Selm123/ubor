@@ -13,5 +13,5 @@ Rails.application.routes.draw do
 
   resources :customers
   resources :drivers
-  resources :bookings, :except => [:edit]
+  resources :bookings
 end

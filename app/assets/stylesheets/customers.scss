@@ -1,3 +1,50 @@
 // Place all the styles related to the Customers controller here.
 // They will automatically be included in application.css.
 // You can use Sass (SCSS) here: http://sass-lang.com/
+
+body.customer_session.new {
+    background-image: url("sign_in_bg.png");
+    background-size: cover;
+    text-align: center;
+}
+
+
+#customers-show-main {
+    margin-top: 10vh;
+    text-align: center;
+}
+
+#customers-show-main ul {
+    text-align: left;
+    padding-left: 10vw;
+}
+
+#customers-show-main ol {
+    text-align: left;
+    padding-left: 10vw;
+}
+
+#customers-show-main h6 {
+    text-align: left;
+    padding-left: 10vw;
+    margin-top: 5vh;
+}
+
+#customer-sign-in-main *{
+    margin-top: 2vh;
+    text-align: center;
+}
+
+#customer-sign-in-main .btn{
+    margin-top: 6vh;
+}
+
+#customer-sign-in-main #email {
+    text-align: left;
+    width: 25vw;
+}
+
+#customer-sign-in-main #password {
+    text-align: left;
+    width: 25vw;
+}

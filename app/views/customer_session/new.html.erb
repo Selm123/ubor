@@ -1,16 +1,35 @@
-<h1>Customer Log In</h1>
+<div class="row">
+  <div id="sign-in-offset1"  class="col-md-12">
+  </div>
+</div>
 
-<% if flash[:error_message] %>
-  <h2><%= flash[:error_message] %></h2>
-<% end %>
 
-<%= form_tag customer_login_path do  %>
-    <%= label_tag :email %>
-    <%= email_field_tag :email %>
+<div id="customer-sign-in-main" class="row">
+  <div class="col-md-8 offset-md-2">
+    <h5>Sign in to ride</h5>
+    <% if flash[:error_message] %>
+      <h2><%= flash[:error_message] %></h2>
+    <% end %>
 
-    <%= label_tag :password %>
-    <%= password_field_tag :password %>
+    <%= form_tag customer_login_path do  %>
+      <div class="row">
+        <div class="col-md-12">
+          <%= email_field_tag :email, nil, :placeholder=>'Email' %>
+        </div>
+      </div>
 
-    <%= submit_tag "Sign In" %>
+      <div class="row">
+        <div class="col-md-12">
+          <%= password_field_tag :password, nil, :placeholder=>'Password' %>
+        </div>
+      </div>
 
-<% end %>
+    <%= submit_tag "Sign in", :class => 'btn btn-success'  %>
+
+    <% end %>
+  </div>
+</div>
+
+
+
+

@@ -9,25 +9,17 @@
 
     <%= csp_meta_tag %>
 
-
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
 
     <%= stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track': 'reload' %>
     <%= javascript_include_tag 'application', 'data-turbolinks-track': 'reload' %>
   </head>
 
-  <body>
-
-  <div class="test">
-  
-  
-  
-  </div>
+  <body class="<%= params[:controller] %> <%= params[:action] %>">
     <div class="row">
       <div class="col-md-4 nav-line"  id="nav-left">
         <a href='/'>Ubor</a>
       </div>
-
       <div class="col-md-8  nav-line">
         <nav>
           <% if @current_customer.present? %>
@@ -39,8 +31,8 @@
             <%= link_to "Driver Profile", @current_driver %>
             <%= link_to "Logout #{ @current_driver.email }", driver_login_path, :method => 'delete' %>
           <% else %>
-            <%= link_to "log in", login_path %>
-            <%= link_to "sign up", signup_path %>
+            <%= link_to "log in", login_path, :id=>"log_in" %>
+            <%= link_to "sign up", signup_path, :id=>"sign_up"  %>
           <% end %>
         </nav>
       </div>
@@ -51,13 +43,5 @@
         <%= yield %>
       </div>
     </div>
-
-    <div class="row">
-      <footer class='footer col-md-12'>
-        <p>Copyright 2021</p>
-      </footer>
-    </div>
-
-  
   </body>
 </html>

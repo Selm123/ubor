@@ -1,2 +1,71 @@
+// * {
+    
+// }
 
 
+body.pages.home {
+    background-image: url('hero_banner_1.jpeg');
+    background-size: cover;   
+}
+
+body.pages.login h3 {
+    display: inline-block;
+}
+
+
+.log_in {
+    color: black;
+    border-bottom: 1px solid black;
+    display: flex;
+    margin: 0 auto;
+    margin-top:30vh;
+    padding:6vh;
+    justify-content: space-between;
+}
+
+
+
+
+.log_in a{
+    color: black;
+    text-decoration: none;
+}
+
+.log_in a:hover{
+    color: grey;
+}
+
+
+
+#offset1 {
+    height: 10vh;
+}
+
+#entrance {
+    height: 60vh;
+    background-color: white;
+}
+
+#entrance-main {
+    padding: 10%;
+    font-size: 10px;
+}
+
+#entrance-main h2 {
+    margin-bottom: 20px;
+}
+
+#entrance-header {
+    border-bottom: 1px solid rgba(128, 128, 128, 0.233);
+    text-align: center;
+    padding-top: 4%;
+    font-size: 10px;
+}
+
+// #entrance-header-left {
+//     text-align: center;
+// }
+
+// #entrance-header-right {
+//     text-align: center;
+// }

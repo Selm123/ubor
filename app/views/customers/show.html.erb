@@ -1,19 +1,46 @@
-<h1><%= @customer.first_name + " " + @customer.last_name %></h1>
 
-    <ul>
-        <li>Email: <%= @customer.email %></li>
-        <li>First Name: <%= @customer.first_name %></li>
-        <li>Last Name: <%= @customer.last_name %></li>
-        <li>Suburb: <%= @customer.suburb %></li>
-    </ul>
+<div id="customers-show-main" class="row">
+    <div class="col-md-8 offset-md-2">
+        <h5>
+            Welcome, <%= @customer.first_name + " " + @customer.last_name %>
+        </h5>
 
+        <h6>Profile:</h6>
 
-    <% @customer.bookings.each do |booking| %>
-        <%= link_to booking.estimated_price.to_s, booking %>
-    <% end %>
+        <ul>
+            <li>Email: <%= @customer.email %></li>
+            <li>Phone: <%= @customer.phone %></li>
+            <li>Street: <%= @customer.street %></li>
+            <li>Suburb: <%= @customer.suburb %></li>
+            <li>Postcode: <%= @customer.postcode %></li>
+            <li>State: <%= @customer.state %></li>
+            <li>Credit card: <%= @customer.credit_card_no %></li>
+            <li>Expirty date: <%= @customer.credit_card_expiry_date %></li>
+            <li>cvv: <%= @customer.cvv %></li>
+        </ul>
+   
+        <div class="control">
+            <div class="row">
+                <div class="col-md-3 offset-md-3">
+                    <%= button_to 'Edit profile', edit_customer_path(@customer),class:"button btn-success",:method => "get" %>
+                </div>
+                
+                <div class="col-md-3">
+                    <%= button_to 'Delete account', @customer, :method => :delete, :data => {:confirm => 'Are you sure?'},class:"button btn-danger" %>             
+                </div>
+            </div>
+        </div>
 
-    
-<div class="control">
-    <%= link_to 'Edit profile', edit_customer_path(@customer) %>
-    <%= link_to 'Delete account', @customer, :method => :delete, :data => {:confirm => 'Are you sure?'} %>
+        <div class="row">
+            <div class="col-md-12">
+                <h6>History bookings</h6>
+                <ol>
+                    <% @customer.bookings.each do |booking| %>
+                        <li>Created time: <%= link_to booking.created_at.to_s, booking %></li>
+                    <% end %>
+                </ol>
+            </div>
+        </div>
+    </div>
 </div>
+   

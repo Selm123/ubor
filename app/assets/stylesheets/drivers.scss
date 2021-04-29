@@ -1,3 +1,65 @@
 // Place all the styles related to the Drivers controller here.
 // They will automatically be included in application.css.
 // You can use Sass (SCSS) here: http://sass-lang.com/
+
+body.driver_session.new {
+    background-image: url("sign_in_bg.png");
+    background-size: cover;
+    text-align: center;
+}
+
+#sign-in-offset1 {
+    height: 10vh;
+}
+
+#driver-sign-up-offset1 {
+    height: 20vh;
+}
+
+#driver-sign-up-bg {
+    z-index: -1;
+}
+
+.sign_up_form {
+    position: absolute;
+    top:20vh;
+    left:60vw;
+    background-color: rgba(246, 246, 246, 1);
+    font-size: 10px;
+    width:32vw;
+    text-align: center;
+}
+
+.sign_up_form input{
+    margin-bottom: 10px;
+    padding-left: 0;
+    padding-right: 0;
+
+}
+
+.sign_up_form h6{
+    text-align: center;
+    margin: 20px auto;
+}
+
+.sign_up_form button{
+    width: 20px;
+}
+
+#driver-sign-in-main *{
+    margin-top: 2vh;
+}
+
+#driver-sign-in-main .btn{
+    margin-top: 6vh;
+}
+
+#driver-sign-in-main #email {
+    text-align: left;
+    width: 25vw;
+}
+
+#driver-sign-in-main #password {
+    text-align: left;
+    width: 25vw;
+}

@@ -1,19 +1,45 @@
-<h1><%= @driver.first_name + " " + @driver.last_name %></h1>
+<div id="customers-show-main" class="row">
+    <div class="col-md-8 offset-md-2">
+        <h5>
+            Welcome, <%= @driver.first_name + " " + @driver.last_name %>
+        </h5>
 
-    <ul>
-        <li>Email: <%= @driver.email %></li>
-        <li>First Name: <%= @driver.first_name %></li>
-        <li>Last Name: <%= @driver.last_name %></li>
-        <li>Suburb: <%= @driver.suburb %></li>
-    </ul>
+        <h6>Profile:</h6>
 
+        <ul>
+            <li>Email: <%= @driver.email %></li>
+            <li>Phone: <%= @driver.phone %></li>
+            <li>Street: <%= @driver.street %></li>
+            <li>Suburb: <%= @driver.suburb %></li>
+            <li>Postcode: <%= @driver.postcode %></li>
+            <li>State: <%= @driver.state %></li>
+            <li>Credit card: <%= @driver.bank_bsb_no %></li>
+            <li>Expirty date: <%= @driver.bank_account_no %></li>
+            <li>cvv: <%= @driver.driver_license_no %></li>
+        </ul>
+   
+        <div class="control">
+            <div class="row">
+                <div class="col-md-3 offset-md-3">
+                    <%= button_to 'Edit profile', edit_driver_path(@driver),class:"button btn-success",:method => "get" %>
+                </div>
+                
+                <div class="col-md-3">
+                    <%= button_to 'Delete account', @driver, :method => :delete, :data => {:confirm => 'Are you sure?'},class:"button btn-danger" %>             
+                </div>
+            </div>
+        </div>
 
-    <% @driver.bookings.each do |booking| %>
-        <%= link_to booking.estimated_price.to_s, booking %>
-    <% end %>
-
-    
-<div class="control">
-    <%= link_to 'Edit profile', edit_driver_path(@driver) %>
-    <%= link_to 'Delete account', @driver, :method => :delete, :data => {:confirm => 'Are you sure?'} %>
+        <div class="row">
+            <div class="col-md-12">
+                <h6>History bookings</h6>
+                <ol>
+                    <% @driver.bookings.each do |booking| %>
+                        <li>Created time: <%= link_to booking.created_at.to_s, booking %></li>
+                    <% end %>
+                </ol>
+            </div>
+        </div>
+    </div>
 </div>
+   

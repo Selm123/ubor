@@ -1,5 +1,5 @@
 class BookingsController < ApplicationController
-  before_action :check_for_customer_login
+  before_action :check_for_customer_login || :check_for_driver_login
 
   def index
     @bookings = Booking.all
@@ -10,16 +10,13 @@ class BookingsController < ApplicationController
   end
 
   def create
-    booking = Booking.create booking_params
+    booking = Booking.create booking_params 
     @current_customer.bookings << booking
-    redirect_to root_path  
+    redirect_to booking
   end
 
   def show
     @booking = Booking.find params[:id]
-    # gon.from_address = @booking.from_address
-    # gon.to_address = @booking.to_address
-    # gon.vv_name = 7
     gon.from_address_lat=Geocoder.coordinates("#{@booking.from_address}")[0]
     gon.from_address_lon=Geocoder.coordinates("#{@booking.from_address}")[1]
     gon.to_address_lat=Geocoder.coordinates("#{@booking.to_address}")[0]
@@ -32,15 +29,15 @@ class BookingsController < ApplicationController
   end
 
   def update
-    customer = Customer.find params[:id]
-    customer.update customer_params
-    redirect_to customer
+    booking = Booking.find params[:id]
+    booking.update booking_params
+    redirect_to booking
   end
 
   def destroy
-    customer = Customer.find params[:id]
-    customer.destroy
-    redirect_to customers_path
+    booking = Booking.find params[:id]
+    booking.destroy
+    redirect_to new_booking_path
 end
 
   private

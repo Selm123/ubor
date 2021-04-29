@@ -1,16 +1,35 @@
-<h1>Driver Log In</h1>
 
-<% if flash[:error_message] %>
-  <h2><%= flash[:error_message] %></h2>
-<% end %>
+<div class="row">
+  <div id="sign-in-offset1"  class="col-md-12">
+  </div>
+</div>
 
-<%= form_tag driver_login_path do  %>
-    <%= label_tag :email %>
-    <%= email_field_tag :email %>
 
-    <%= label_tag :password %>
-    <%= password_field_tag :password %>
+<div id="driver-sign-in-main" class="row">
+  <div class="col-md-8 offset-md-2">
+    <h5>Sign in to drive</h5>
+    <% if flash[:error_message] %>
+      <h2><%= flash[:error_message] %></h2>
+    <% end %>
 
-    <%= submit_tag "Sign In" %>
+    <%= form_tag driver_login_path do  %>
+      <div class="row">
+        <div class="col-md-12">
+          <%= email_field_tag :email, nil, :placeholder=>'Email' %>
+        </div>
+      </div>
 
-<% end %>
+      <div class="row">
+        <div class="col-md-12">
+          <%= password_field_tag :password, nil, :placeholder=>'Password' %>
+        </div>
+      </div>
+
+    <%= submit_tag "Sign in", :class => 'btn btn-success'  %>
+
+    <% end %>
+  </div>
+</div>
+
+
+

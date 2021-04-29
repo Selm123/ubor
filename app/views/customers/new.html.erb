@@ -1,52 +1,112 @@
-<h1>Welcome Customer! Please sign up below</h1>
 
-<% if @customer.errors.any? %>
-    <ol>
-        <% @customer.errors.full_messages.each do|msg| %>
-            <li><%= msg %></li>
-        <% end %>
-    </ol>
-<% end %>
+<div id="driver-sign-up-offset1"  class="row"></div>
 
-<%= form_for @customer do |f|%>
-    <%= f.label :first_name %>
-    <%= f.text_field :first_name, :required => true %>
+<div class="row">
+    <div id="driver-sign-up-header" class="col-md-6 offset-md-1">
+        <h3>Go anywhere with Ubor!</h3>
+        <p>Lorem ipsum, dolor sit amet consectetur adipisicing elit. Amet iste maxime, necessitatibus sapiente ex ipsa. Excepturi ad animi sed rerum. Adipisci vitae consequuntur nesciunt porro voluptates exercitationem, minus architecto temporibus.</p>
+    </div>  
+</div>
 
-    <%= f.label :last_name %>
-    <%= f.text_field :last_name, :required => true %>
 
-    <%= f.label :street %>
-    <%= f.text_field :street %>
+<div class="row">
+    <div id="driver-sign-up-bg" class="col-md-12">
+        <img src="/assets/driver_sign_up_hero_banner.png" alt="">
+    </div>
+</div>
 
-    <%= f.label :suburb %>
-    <%= f.text_field :suburb %>
+<div class="sign_up_form">
+    <% if @customer.errors.any? %>
+        <ol>
+            <% @customer.errors.full_messages.each do|msg| %>
+                <li><%= msg %></li>
+            <% end %>
+        </ol>
+    <% end %>
 
-    <%= f.label :postcode %>
-    <%= f.text_field :postcode %>
+    <div class="form-containter ">
+        <%= form_for @customer do |f|%>
+        <h6>Sign up now</h6>
 
-    <%= f.label :state %>
-    <%= f.text_field :state %>
 
-    <%= f.label :email %>
-    <%= f.email_field :email %>
+        <div class="row">
+            <div class="col-md-6">
+                <%= f.email_field :email, :placeholder=>"Email", :required=>true %>
+            </div>
 
-    <%= f.label :password %>
-    <%= f.password_field :password %> 
+            <div class="col-md-6">
+                <%= f.text_field :phone, :placeholder=>"Phone"  %>
+            </div>
+        </div>
 
-    <%= f.label :password_confirmation %>
-    <%= f.password_field :password_confirmation %>
+        <div class="row">
+            <div class="col-md-6">
+                <%= f.password_field :password, :placeholder=>"Password" %> 
+            </div>
 
-    <%= f.label :phone %>
-    <%= f.text_field :phone %>
+            <div class="col-md-6">
+                <%= f.password_field :password_confirmation, :placeholder=>"Password confirmation" %>
+            </div>
+        </div>
 
-    <%= f.label :credit_card_no %>
-    <%= f.text_field :credit_card_no %>
+        <div class="row">
+            <div class="col-md-6">
+                <%= f.text_field :first_name, :required => true, :placeholder=>"First name" %>
+            </div>
+            
+            <div class="col-md-6">
+                <%= f.text_field :last_name, :required => true, :placeholder=>"Last name" %> 
+            </div>
+        </div>
 
-    <%= f.label :credit_card_expiry_date %>
-    <%= f.text_field :credit_card_expiry_date, :placeholder => 'YYYY-MM-DD' %>  
+        <div class="row">
+            <div class="col-md-6">
+                <%= f.text_field :street, :placeholder=>"Street" %> 
+            </div>
+            
+            <div class="col-md-6">
+                <%= f.text_field :suburb, :placeholder=>"Suburb" %> 
+            </div>
+        </div>
 
-    <%= f.label :cvv %>
-    <%= f.text_field :cvv %>
+        <div class="row">
+            <div class="col-md-6">
+                <%= f.text_field :state, :placeholder=>"State" %> 
+            </div>
+            
+            <div class="col-md-6">
+                <%= f.text_field :postcode, :placeholder=>"Postcode" %>
+            </div>
+        </div>
 
-    <%= f.submit "Sign up!", :class => 'btn btn-success btn-lg'%>
-<% end %>
+        <div class="row">
+            <div class="col-md-6">
+                <%= f.text_field :credit_card_no, :placeholder=>"Credit card" %>
+            </div>
+            
+            <div class="col-md-6">
+                <%= f.text_field :credit_card_expiry_date, :placeholder => 'Expiry date'%> 
+            </div>
+        </div>       
+
+        <div class="row">
+            <div class="col-md-6">
+                <%= f.text_field :cvv, :placeholder=>"cvv" %>
+            </div>
+        </div>   
+
+       <div class="row">
+           <div class="col-md-12">
+            <%= f.submit "Sign up!", :class => 'btn btn-success'%>
+           </div>
+       </div>
+        
+    <% end %>
+    </div>
+    
+
+</div>
+
+
+
+

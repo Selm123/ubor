@@ -16,7 +16,8 @@
 
 body {
     margin: 0;
-    background-color: antiquewhite;
+    background-color: white;
+    
 }
 
 .container {
@@ -61,8 +62,6 @@ footer {
 img {
     max-width: 100%;
 }
-
-
 
 
 

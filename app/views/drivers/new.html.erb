@@ -1,55 +1,111 @@
-<h1>Welcome Driver! Please sign up below</h1>
 
-<% if @driver.errors.any? %>
-    <ol>
-        <% @driver.errors.full_messages.each do|msg| %>
-            <li><%= msg %></li>
-        <% end %>
-    </ol>
-<% end %>
+<div id="driver-sign-up-offset1"  class="row"></div>
 
-<%= form_for @driver do |f|%>
-    <%= f.label :first_name %>
-    <%= f.text_field :first_name, :required => true %>
+<div class="row">
+    <div id="driver-sign-up-header" class="col-md-6 offset-md-1">
+        <h3>Ubor needs partners like you.</h3>
+        <p>Drive with Ubor and earn great money as an independent contractor. Get paid weekly just for helping our community of riders get rides around town. Be your own boss and get paid in fares for driving on your own schedule.</p>
+    </div>  
+</div>
 
-    <%= f.label :last_name %>
-    <%= f.text_field :last_name, :required => true %>
 
-    <%= f.label :street %>
-    <%= f.text_field :street %>
+<div class="row">
+    <div id="driver-sign-up-bg" class="col-md-12">
+        <img src="/assets/driver_sign_up_hero_banner.png" alt="">
+    </div>
+</div>
 
-    <%= f.label :suburb %>
-    <%= f.text_field :suburb %>
+<div class="sign_up_form">
+    <% if @driver.errors.any? %>
+        <ol>
+            <% @driver.errors.full_messages.each do|msg| %>
+                <li><%= msg %></li>
+            <% end %>
+        </ol>
+    <% end %>
 
-    <%= f.label :postcode %>
-    <%= f.text_field :postcode %>
+    <div class="form-containter ">
+        <%= form_for @driver do |f|%>
+        <h6>Sign up now</h6>
 
-    <%= f.label :state %>
-    <%= f.text_field :state %>
 
-    <%= f.label :email %>
-    <%= f.email_field :email %>
+        <div class="row">
+            <div class="col-md-6">
+                <%= f.email_field :email, :placeholder=>"Email", :required=>true %>
+            </div>
 
-    <%= f.label :password %>
-    <%= f.password_field :password %> 
+            <div class="col-md-6">
+                <%= f.text_field :phone, :placeholder=>"Phone"  %>
+            </div>
+        </div>
 
-    <%= f.label :password_confirmation %>
-    <%= f.password_field :password_confirmation %>
+        <div class="row">
+            <div class="col-md-6">
+                <%= f.password_field :password, :placeholder=>"Password" %> 
+            </div>
 
-    <%= f.label :phone %>
-    <%= f.text_field :phone %>
+            <div class="col-md-6">
+                <%= f.password_field :password_confirmation, :placeholder=>"Password confirmation" %>
+            </div>
+        </div>
 
-    <%= f.label :bank_bsb_no %>
-    <%= f.text_field :bank_bsb_no %>
+        <div class="row">
+            <div class="col-md-6">
+                <%= f.text_field :first_name, :required => true, :placeholder=>"First name" %>
+            </div>
+            
+            <div class="col-md-6">
+                <%= f.text_field :last_name, :required => true, :placeholder=>"Last name" %> 
+            </div>
+        </div>
 
-    <%= f.label :bank_account_no %>
-    <%= f.text_field :bank_account_no %>  
+        <div class="row">
+            <div class="col-md-6">
+                <%= f.text_field :street, :placeholder=>"Street" %> 
+            </div>
+            
+            <div class="col-md-6">
+                <%= f.text_field :suburb, :placeholder=>"Suburb" %> 
+            </div>
+        </div>
 
-    <%= f.label :car_model_id %>
-    <%= f.text_field :car_model_id %>
+        <div class="row">
+            <div class="col-md-6">
+                <%= f.text_field :state, :placeholder=>"State" %> 
+            </div>
+            
+            <div class="col-md-6">
+                <%= f.text_field :postcode, :placeholder=>"Postcode" %>
+            </div>
+        </div>
 
-    <%= f.label :driver_license_no %>
-    <%= f.text_field :driver_license_no %>
+        <div class="row">
+            <div class="col-md-6">
+                <%= f.text_field :bank_bsb_no, :placeholder=>"BSB" %>
+            </div>
+            
+            <div class="col-md-6">
+                <%= f.text_field :bank_account_no, :placeholder=>"Account no." %>  
+            </div>
+        </div>       
 
-    <%= f.submit "Sign up!", :class => 'btn btn-success btn-lg'%>
-<% end %>
+        <div class="row">
+            <div class="col-md-6">
+                <%= f.text_field :driver_license_no, :placeholder=>"Driver license" %>
+            </div>
+        </div>   
+
+       <div class="row">
+           <div class="col-md-12">
+            <%= f.submit "Sign up!", :class => 'btn btn-success'%>
+           </div>
+       </div>
+        
+    <% end %>
+    </div>
+    
+
+</div>
+
+
+

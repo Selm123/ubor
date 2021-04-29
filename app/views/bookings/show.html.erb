@@ -40,40 +40,65 @@
         );
       }
     
+    
+    
     </script>
 
 
-    <% 
-    from_coordinates = Geocoder.coordinates("#{@current_customer.bookings[@current_customer.bookings.length-1].from_address}")
+<% 
+  if @current_customer.nil?
+    current_booking = @current_driver.bookings[@current_driver.bookings.length-1] 
+  else
+    current_booking = @current_customer.bookings[@current_customer.bookings.length-1]
+  end
 
-    to_coordinates = Geocoder.coordinates("#{@current_customer.bookings[@current_customer.bookings.length-1].to_address}")
+  from_coordinates = Geocoder.coordinates("#{current_booking.from_address}")
 
+  to_coordinates = Geocoder.coordinates("#{current_booking.to_address}")
+
+  distance = (Geocoder::Calculations.distance_between([from_coordinates[0],from_coordinates[1]], [to_coordinates[0],to_coordinates[1]])*1.60934 *1.15).round(2)
+  #1.60934 is to transfer mile into km; 1.15 is estimated transfer from straight distance between coordinates to actual routes distance
+
+  estimated_price = (distance * 2.7).round(2)
+  # 2.7 is estimated transfer from distance to price
+  @booking.estimated_price = estimated_price
+  @booking.save
 %>
 
-
-distance: <%= Geocoder::Calculations.distance_between([from_coordinates[0],from_coordinates[1]], [to_coordinates[0],to_coordinates[1]])*1.60934 *1.15%> km
-
-
-<h1><%= @booking.estimated_price %></h1>
-
-<ul>
-    <li>Estimated: <%= @booking.estimated_price %></li>
-    <% if @booking.driver.present? %>
-    <li>Driver: <%=link_to @booking.driver.email, @booking.driver %></li>
-    <% end %>
-    <li>Customer: <%=link_to @booking.customer.email, @booking.customer %></li>
-</ul>
-
-<div class="controls">
-    
-    <%= link_to 'Delete booking', @booking, :method => 'delete', :data => {:confirm => 'Are you sure?' } %>
+<div id="booking-show-offset1" class="row">
+  <div class="col-md-12"></div>
 </div>
 
-<%= @booking.from_address %>
+<div id="booking-show-main" class="row">
+  <div class="col-md-4 offset-md-1">
+    <ul>
+      <li>From: <%= @booking.from_address %></li>
+      <li>To: <%= @booking.to_address %></li>
+      <li>Distance: <%= distance %> km</li>
+      <li>Estimated price: $<%= estimated_price %></li>
+      <% if @booking.driver.present? %>
+      <li>Driver: <%=link_to @booking.driver.email, @booking.driver %></li>
+      <% end %>
+    </ul>
 
-<%= @booking.to_address %>
+    <div class="controls">  
+      <div class="row">
+        <div class="col-md-6">
+          <%= button_to 'Cancel booking', @booking, :method => 'delete', :data => {:confirm => 'Are you sure?' }, class: "button btn-danger"%>
+        </div>
 
-<div id="floating-panel">
+        <div class="col-md-6">
+          <%= form_for @booking do |t|%>
+          <%= t.hidden_field :status, @booking.status=> "confirmed" %>
+          <%= t.submit "Confirm booking", class: "button btn-success" %>
+          <% end %>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div class="col-md-7">
+    <div id="floating-panel">
       <b>Mode of Travel: </b>
       <select id="mode">
         <option value="DRIVING">Driving</option>
@@ -82,8 +107,12 @@ distance: <%= Geocoder::Calculations.distance_between([from_coordinates[0],from_
         <option value="TRANSIT">Transit</option>
       </select>
     </div>
-
     <div id="map"></div>
+  </div>
+</div>
 
+<script async defer src="https://maps.googleapis.com/maps/api/js?key=AIzaSyDjI23uIXRb73MjkDTGcrkN_OJy7i0dbS0&callback=initMap"></script>
 
-    <script async defer src="https://maps.googleapis.com/maps/api/js?key=AIzaSyDjI23uIXRb73MjkDTGcrkN_OJy7i0dbS0&callback=initMap"></script>
+<script>
+  $('#confirm-btn').text(gon.booking.from_address)
+</script>
