@@ -45,8 +45,9 @@
 
 <% # geocoder to calculate coordinates, distance and estimated price start %>
 <% 
+  # remove condition later because no need
   if @current_customer.nil?
-    current_booking =  Booking.find params[:id]
+    current_booking = Booking.find params[:id]
   else
     current_booking = Booking.find params[:id]
   end

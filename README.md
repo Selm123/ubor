@@ -3,6 +3,7 @@
 ## It's Ubor, not Uber
 
 [It's Ubor, not Uber](https://project1ubor.herokuapp.com/)
+*** Please view the page in 150% zoom mode until I fix it ***
 
 ## Future iterations
 * Change booking status
