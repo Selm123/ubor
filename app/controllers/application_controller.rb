@@ -14,11 +14,19 @@ class ApplicationController < ActionController::Base
     end
 
     def check_for_customer_login
-        redirect_to customer_login_path unless (@current_customer.present? || @current_driver.present?)
+        redirect_to customer_login_path unless @current_customer.present?
     end
 
     def check_for_driver_login
-        redirect_to driver_login_path unless (@current_customer.present? || @current_driver.present?)
+        redirect_to driver_login_path unless @current_driver.present?
+    end
+
+    def check_for_customer_login_booking (booking)
+        redirect_to customer_login_path unless (@current_customer.present? && @current_customer.id == booking.customer_id)
+    end
+
+    def check_for_driver_login_booking (booking)
+        redirect_to driver_login_path unless (@current_driver.present? && @current_driver.id == booking.driver_id)
     end
 
     def check_for_admin

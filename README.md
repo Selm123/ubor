@@ -5,10 +5,8 @@
 [It's Ubor, not Uber](https://project1ubor.herokuapp.com/)
 
 ## Future iterations
-* UTC time to Sydney time
 * Change booking status
 * Different booking authorisation for customers and drivers
-* Home page toggle background photo 
 
 * Add more comments
 * Add default 'NSW Australia' to from and to address
