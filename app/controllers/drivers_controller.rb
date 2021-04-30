@@ -1,4 +1,5 @@
 class DriversController < ApplicationController
+  before_action :check_for_driver_login
   # before_action :check_for_admin, :only => [:index]
 
   # def index

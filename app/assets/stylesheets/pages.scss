@@ -1,6 +1,13 @@
 body.pages.home {
     background-image: url('hero_banner_1.jpeg');
     background-size: cover;   
+    transition: 2s;
+}
+
+body.pages.home.driver {
+    background-image: url('hero_banner_2.jpeg');
+    background-size: cover;   
+    transition: 2s;
 }
 
 body.pages.login h3 {

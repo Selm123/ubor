@@ -9,7 +9,7 @@ $(document).ready(function () {
   $("#entrance-header-left").on("click",function() {
     $("#entrance-header-left").css("border-bottom", "2px solid black");
     $("#entrance-header-right").css("border-bottom", "none");
-    // $("body.pages.home").attr("style","background-image: url('hero_banner_1.jpeg')");
+    $("body.pages.home").removeClass("driver");
     $("#entrance-main-1").show();
     $("#entrance-main-2").hide();
   });
@@ -17,7 +17,7 @@ $(document).ready(function () {
   $("#entrance-header-right").on("click",function() {
     $("#entrance-header-right").css("border-bottom", "2px solid black")
     $("#entrance-header-left").css("border-bottom", "none");
-
+    $("body.pages.home").addClass("driver");
     $("#entrance-main-2").show();
     $("#entrance-main-1").hide();
   });

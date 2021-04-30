@@ -1,4 +1,5 @@
 class CustomersController < ApplicationController
+  before_action :check_for_customer_login
   # before_action :check_for_admin, :only => [:index]
 
   # def index
