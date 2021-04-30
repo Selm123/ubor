@@ -21,7 +21,7 @@ class BookingsController < ApplicationController
 
   def show
     @booking = Booking.find params[:id]
-    check_for_driver_login_booking(@booking)
+    # check_for_driver_login_booking(@booking)
 
     # using gon and geocoder to pass coordinates from rails to google map api, which is written in JavaScript
     gon.from_address_lat=Geocoder.coordinates("#{@booking.from_address}")[0]

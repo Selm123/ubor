@@ -46,9 +46,9 @@
 <% # geocoder to calculate coordinates, distance and estimated price start %>
 <% 
   if @current_customer.nil?
-    current_booking = @current_driver.bookings[@current_driver.bookings.length-1] 
+    current_booking =  Booking.find params[:id]
   else
-    current_booking = @current_customer.bookings[@current_customer.bookings.length-1]
+    current_booking = Booking.find params[:id]
   end
 
   from_coordinates = Geocoder.coordinates("#{current_booking.from_address}")
