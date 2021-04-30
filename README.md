@@ -1,8 +1,8 @@
 # README
 
-## It's Ubor, not Uber
+## It's Ubor, not Uber 
 
-[It's Ubor, not Uber](https://project1ubor.herokuapp.com/)
+[It's Ubor, not Uber](https://ubor-project1.herokuapp.com/)
 *** Please view the page in 150% zoom mode until I fix it ***
 
 ## Future iterations
