@@ -7,8 +7,12 @@
 
 ## Future iterations
 * Change booking status
-* Different booking authorisation for customers and drivers
+* Different authorisation for customers and drivers to view different pages and change booking status. Customer could create booking, and only see his own bookings with all status; driver could see all bookings whose status is new; neither of them could see customers index or driver index; booking could be updated (add estimated price;
 
+* Make the nav bar on top fixed
+* Add footer
+* Add distance to booking model and remove unnecessary columns
+* Make driver and customer UI look more different
 * Add more comments
 * Add default 'NSW Australia' to from and to address
 * Modify the tables, remove unnecessary columns
